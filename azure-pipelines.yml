@@ -73,12 +73,16 @@ jobs:
     matrix:
       sidecar_01:
         externalPort: 1433
+        tSQLtTestClass: ''
       sidecar_02:
         externalPort: 1434
+        tSQLtTestClass: ''
       sidecar_03:
         externalPort: 1435
+        tSQLtTestClass: ''
       sidecar_04:
         externalPort: 1436
+        tSQLtTestClass: ''
   variables:
   - name: connString
     value: 'server=10.225.112.103,$(externalPort);database=tpch;user id=sa;password=Strong!Passw0rd'
@@ -92,3 +96,5 @@ jobs:
     displayName: 'Prepare sidecar for tSQLtCLR assembly'
   - script: sqlpackage.exe /Action:Publish /sf:"$(dacPacPath)" /tcs:"$(connString)" /p:ExcludeObjectType=Logins
     displayName: 'Publish DacPac'
+  - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC tSQLt.Run $(tSQLtTestClass);"
+    displayName: 'Execute tSQLt Tests'
