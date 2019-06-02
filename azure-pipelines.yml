@@ -73,16 +73,16 @@ jobs:
     matrix:
       sidecar_01:
         externalPort: 1433
-        tSQLtTestClass: ''
+        tSQLtTestClass: 'DecL_Tax'
       sidecar_02:
         externalPort: 1434
-        tSQLtTestClass: ''
+        tSQLtTestClass: 'IncL_Tax'
       sidecar_03:
         externalPort: 1435
-        tSQLtTestClass: ''
+        tSQLtTestClass: 'DecPS_AvailQty'
       sidecar_04:
         externalPort: 1436
-        tSQLtTestClass: ''
+        tSQLtTestClass: 'IncPS_AvailQty'
   variables:
   - name: connString
     value: 'server=10.225.112.103,$(externalPort);database=tpch;user id=sa;password=Strong!Passw0rd'
