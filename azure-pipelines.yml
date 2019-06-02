@@ -41,7 +41,7 @@ jobs:
         tSQLtTestClass: Test04
   steps:
   - script: |
-      sudo docker volume create --driver pure --opt o=size=2048m $(dockerVolume) 
+      sudo docker volume create --driver pure --opt o=size=10g $(dockerVolume) 
       sudo docker run -v $(dockerVolume):/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Strong!Passw0rd' -p $(externalPort):1433 --name $(container) -d mcr.microsoft.com/mssql/server:2017-latest 
       sudo docker stop $(container)
     displayName: 'Create sidecar'
