@@ -93,6 +93,7 @@ jobs:
       sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
       sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'clr enabled', 1; RECONFIGURE;"
       sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'clr strict security', 0; RECONFIGURE;"
+      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d master -U sa -P Strong!Passw0rd -Q "ALTER DATABASE tpch SET RECOVERY MODEL SIMPLE;"
     displayName: 'Prepare sidecar for tSQLtCLR assembly'
   - script: sqlpackage.exe /Action:Publish /sf:"$(dacPacPath)" /tcs:"$(connString)" /p:ExcludeObjectType=Logins
     displayName: 'Publish DacPac'
