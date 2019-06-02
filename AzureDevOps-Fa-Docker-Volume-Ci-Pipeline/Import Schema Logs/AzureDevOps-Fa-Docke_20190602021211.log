@@ -1,0 +1,85 @@
+02/06/2019 15:12:11	This log contains information about the import schema operation into project 'AzureDevOps-Fa-Docker-Volume-Ci-Pipeline' on computer 'DESKTOP-JH5C5FM' by user 'cadkin'.
+02/06/2019 15:12:11	Import of database schema has started.
+02/06/2019 15:12:17	Gathering database credentials
+02/06/2019 15:12:17	Gathering database options
+02/06/2019 15:12:17	Gathering generic database scoped configuration option
+02/06/2019 15:12:17	Gathering users
+02/06/2019 15:12:17	Gathering roles
+02/06/2019 15:12:17	Gathering application roles
+02/06/2019 15:12:17	Gathering role memberships
+02/06/2019 15:12:17	Gathering filegroups
+02/06/2019 15:12:17	Gathering full-text catalogs
+02/06/2019 15:12:17	Gathering assemblies
+02/06/2019 15:12:17	Gathering certificates
+02/06/2019 15:12:17	Gathering asymmetric keys
+02/06/2019 15:12:17	Gathering symmetric keys
+02/06/2019 15:12:17	Gathering encrypted symmetric keys
+02/06/2019 15:12:17	Gathering schemas
+02/06/2019 15:12:17	Gathering XML schema collections
+02/06/2019 15:12:17	Gathering user-defined data types
+02/06/2019 15:12:17	Gathering user-defined types
+02/06/2019 15:12:17	Gathering table types
+02/06/2019 15:12:17	Gathering unique keys for table types
+02/06/2019 15:12:17	Gathering primary keys for table types
+02/06/2019 15:12:17	Gathering indexes for table types
+02/06/2019 15:12:17	Gathering check constraints for table types
+02/06/2019 15:12:17	Gathering default constraints for table types
+02/06/2019 15:12:17	Gathering partition functions
+02/06/2019 15:12:17	Gathering partition schemes
+02/06/2019 15:12:17	Gathering functions
+02/06/2019 15:12:17	Gathering encrypted functions
+02/06/2019 15:12:17	Gathering aggregates
+02/06/2019 15:12:17	Gathering procedures
+02/06/2019 15:12:17	Gathering encrypted procedures
+02/06/2019 15:12:17	Gathering tables
+02/06/2019 15:12:17	Gathering primary keys
+02/06/2019 15:12:17	Gathering unique constraints
+02/06/2019 15:12:17	Gathering foreign keys
+02/06/2019 15:12:17	Gathering default constraints
+02/06/2019 15:12:17	Gathering check constraints
+02/06/2019 15:12:17	Gathering views
+02/06/2019 15:12:17	Gathering encrypted views
+02/06/2019 15:12:17	Gathering indexes
+02/06/2019 15:12:17	Gathering statistics
+02/06/2019 15:12:17	Gathering full-text index stoplists
+02/06/2019 15:12:17	Gathering search property lists
+02/06/2019 15:12:17	Gathering search properties
+02/06/2019 15:12:17	Gathering full-text indexes
+02/06/2019 15:12:17	Gathering column store indexes
+02/06/2019 15:12:17	Gathering spatial indexes
+02/06/2019 15:12:17	Gathering XML indexes
+02/06/2019 15:12:17	Gathering Selective XML indexes
+02/06/2019 15:12:17	Gathering encrypted triggers
+02/06/2019 15:12:17	Gathering triggers
+02/06/2019 15:12:17	Gathering encrypted and clr ddl triggers
+02/06/2019 15:12:17	Gathering ddl triggers
+02/06/2019 15:12:17	Gathering synonyms
+02/06/2019 15:12:17	Gathering defaults
+02/06/2019 15:12:17	Gathering data constraint uddt bindings
+02/06/2019 15:12:17	Gathering rules
+02/06/2019 15:12:17	Gathering data constraint uddt bindings
+02/06/2019 15:12:17	Gathering message types
+02/06/2019 15:12:17	Gathering queues
+02/06/2019 15:12:17	Gathering contracts
+02/06/2019 15:12:17	Gathering services
+02/06/2019 15:12:17	Gathering event notifications
+02/06/2019 15:12:17	Gathering remote service bindings
+02/06/2019 15:12:17	Gathering broker priorities
+02/06/2019 15:12:17	Gathering signatures
+02/06/2019 15:12:17	Gathering data compression options
+02/06/2019 15:12:17	Gathering sequence types
+02/06/2019 15:12:17	Gathering security policies
+02/06/2019 15:12:17	Gather column encryption keys
+02/06/2019 15:12:17	Gathering column master keys
+02/06/2019 15:12:17	Gathering external data sources
+02/06/2019 15:12:17	Gathering external file formats
+02/06/2019 15:12:17	Gathering external tables
+02/06/2019 15:12:17	Gathering extended properties
+02/06/2019 15:12:18	Gathering credentials
+02/06/2019 15:12:18	Gathering logins
+02/06/2019 15:12:18	Gathering server audits
+02/06/2019 15:12:18	Scanning project for duplicate elements
+02/06/2019 15:12:18	Finished duplicate element processing
+02/06/2019 15:12:19	Finished importing database.
+02/06/2019 15:12:19	A summary of the import was saved to the following location: C:\Projects\AzureDevOps-Fa-Docker-Volume-Ci-Pipeline\AzureDevOps-Fa-Docker-Volume-Ci-Pipeline\Import Schema Logs\AzureDevOps-Fa-Docke_20190602021211.log
+02/06/2019 15:12:19	Click Finish to continue...

@@ -1,0 +1,94 @@
+trigger:
+- master
+
+variables:
+- name: ssdtProject
+  value: 'AzureDevOps-Fa-Docker-Volume-Ci-Pipeline'
+
+jobs:
+- job: CleanEnvironment
+  pool: $(linuxAgentPool)
+  steps:
+  - script: |
+      sudo docker rm -f $(sudo docker ps -a -q)
+      sudo docker volume rm -f $(sudo docker volume ls | grep -v $(seedDockerVolume))
+    displayName: 'Clean up old sidecar containers and volumes'
+
+- job: BuildTestEnvironment
+  pool: $(linuxAgentPool)
+  dependsOn: CleanEnvironment
+  strategy:
+    matrix:
+      sidecar_01:
+        container: SideCar01
+        externalPort: 1433
+        dockerVolume: Volume01
+        tSQLtTestClass: Test01
+      sidecar_02:
+        container: SideCar02
+        externalPort: 1434
+        dockerVolume: Volume02
+        tSQLtTestClass: Test02
+      sidecar_03:
+        container: SideCar03
+        externalPort: 1435
+        dockerVolume: Volume03
+        tSQLtTestClass: Test03
+      sidecar_04:
+        container: SideCar04
+        externalPort: 1436
+        dockerVolume: Volume04
+        tSQLtTestClass: Test04
+  steps:
+  - script: |
+      sudo docker volume create --driver pure --opt o=size=2048m $(dockerVolume) 
+      sudo docker run -v $(dockerVolume):/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Strong!Passw0rd' -p $(externalPort):1433 --name $(container) -d mcr.microsoft.com/mssql/server:2017-latest 
+      sudo docker stop $(container)
+    displayName: 'Create sidecar'
+  - template: templates/clone-docker-volume.yml  
+    parameters:
+      sourceVolume: 'ca-docker-$(seedDockerVolume)'
+      targetVolume: 'ca-docker-$(dockerVolume)'
+      pfaEndpoint:  '$(pfaEndpoint)'
+ # - download: current
+  - script: |
+      sudo docker start $(container)
+
+- job: BuildDacPac
+  pool: $(winAgentPool)
+  steps:
+  - task: MSBuild@1
+    displayName: 'Build DACPAC'
+    inputs:
+      solution: '$(ssdtProject).sln'
+      msbuildArguments: '/property:OutDir=bin\Release'
+#  - upload: $(ssdtProject)\bin\Release
+
+- job: DeployAndTestDacPac
+  dependsOn: 
+  - BuildDacPac
+  - BuildTestEnvironment
+  pool: $(winAgentPool)
+  strategy:
+    matrix:
+      sidecar_01:
+        externalPort: 1433
+      sidecar_02:
+        externalPort: 1434
+      sidecar_03:
+        externalPort: 1435
+      sidecar_04:
+        externalPort: 1436
+  variables:
+  - name: connString
+    value: 'server=10.225.112.103,$(externalPort);database=tpch;user id=sa;password=Strong!Passw0rd'
+  - name: dacPacPath
+    value: '$(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release\$(ssdtProject).dacpac'
+  steps:
+  - script: |
+      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
+      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'clr enabled', 1; RECONFIGURE;"
+      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'clr strict security', 0; RECONFIGURE;"
+    displayName: 'Prepare sidecar for tSQLtCLR assembly'
+  - script: sqlpackage.exe /Action:Publish /sf:"$(dacPacPath)" /tcs:"$(connString)" /p:ExcludeObjectType=Logins
+    displayName: 'Publish DacPac'

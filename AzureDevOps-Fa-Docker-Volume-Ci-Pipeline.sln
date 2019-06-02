@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AzureDevOps-Fa-Docker-Volume-Ci-Pipeline", "AzureDevOps-Fa-Docker-Volume-Ci-Pipeline\AzureDevOps-Fa-Docker-Volume-Ci-Pipeline.sqlproj", "{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12FA0BE8-AF5E-4E5D-8C59-71471F6909F1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EAFEB85D-27E0-4A4D-81A9-5C8BD493705F}
+	EndGlobalSection
+EndGlobal
