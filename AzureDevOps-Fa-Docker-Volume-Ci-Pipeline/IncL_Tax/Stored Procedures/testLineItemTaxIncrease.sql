@@ -8,13 +8,16 @@ BEGIN
 	        ,@ActualSum   DECIMAL(13,3)
 
 	SELECT @ExpectedSum = SUM(L_Tax + 0.01)
-	FROM   LineItem;
+	FROM   LineItem
+	WHERE  L_Tax > 0.04;
 
   	UPDATE LineItem
-	SET    L_Tax = L_Tax + 0.01;
+	SET    L_Tax = L_Tax + 0.01
+	WHERE  L_Tax > 0.04;
 
 	SELECT @ActualSum = SUM(L_Tax)
-	FROM   LineItem;
+	FROM   LineItem
+	WHERE  L_Tax > 0.04;
 
     EXEC tSQLt.AssertEquals @ExpectedSum , @ActualSum;
 END;
