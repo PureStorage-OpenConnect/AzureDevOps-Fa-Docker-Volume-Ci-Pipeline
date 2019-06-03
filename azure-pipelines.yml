@@ -41,7 +41,7 @@ jobs:
         tSQLtTestClass: Test04
   steps:
   - script: |
-      sudo docker volume create --driver pure --opt o=size=2048m $(dockerVolume) 
+      sudo docker volume create --driver pure --opt o=size=80g $(dockerVolume) 
       sudo docker run -v $(dockerVolume):/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Strong!Passw0rd' -p $(externalPort):1433 --name $(container) -d mcr.microsoft.com/mssql/server:2017-latest 
       sudo docker stop $(container)
     displayName: 'Create sidecar'
@@ -73,12 +73,16 @@ jobs:
     matrix:
       sidecar_01:
         externalPort: 1433
+        tSQLtTestClass: 'DecL_Tax'
       sidecar_02:
         externalPort: 1434
+        tSQLtTestClass: 'IncL_Tax'
       sidecar_03:
         externalPort: 1435
+        tSQLtTestClass: 'DecPS_AvailQty'
       sidecar_04:
         externalPort: 1436
+        tSQLtTestClass: 'IncPS_AvailQty'
   variables:
   - name: connString
     value: 'server=10.225.112.103,$(externalPort);database=tpch;user id=sa;password=Strong!Passw0rd'
@@ -89,6 +93,9 @@ jobs:
       sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
       sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'clr enabled', 1; RECONFIGURE;"
       sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC sp_configure 'clr strict security', 0; RECONFIGURE;"
+      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d master -U sa -P Strong!Passw0rd -Q "ALTER DATABASE tpch SET RECOVERY SIMPLE;"
     displayName: 'Prepare sidecar for tSQLtCLR assembly'
   - script: sqlpackage.exe /Action:Publish /sf:"$(dacPacPath)" /tcs:"$(connString)" /p:ExcludeObjectType=Logins
     displayName: 'Publish DacPac'
+  - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC tSQLt.Run $(tSQLtTestClass);"
+    displayName: 'Execute tSQLt Tests'
