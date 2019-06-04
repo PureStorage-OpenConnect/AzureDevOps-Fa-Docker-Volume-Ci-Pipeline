@@ -103,3 +103,11 @@ jobs:
     displayName: 'Execute tSQLt Tests'
   - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -y0 -Q "SET NOCOUNT ON;EXEC tSQLt.XmlResultFormatter;" -o $(System.DefaultWorkingDirectory)\$(tSQLtTestClass).xml
     displayName: 'Render tSQLt Results in XML'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '*.xml' 
+      searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+    displayName: 'Publish tSQLt Test Results'
