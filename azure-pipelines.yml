@@ -101,5 +101,5 @@ jobs:
     displayName: 'Publish DacPac'
   - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -Q "EXEC tSQLt.Run $(tSQLtTestClass);"
     displayName: 'Execute tSQLt Tests'
-  - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -y0 -Q "SET NOCOUNT ON;EXEC tSQLt.XmlResultFormatter;" -o $(DefaultWorkingDirectory)\$(tSQLtTestClass).xml
+  - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P Strong!Passw0rd -y0 -Q "SET NOCOUNT ON;EXEC tSQLt.XmlResultFormatter;" -o $(System.DefaultWorkingDirectory)\$(tSQLtTestClass).xml
     displayName: 'Render tSQLt Results in XML'
