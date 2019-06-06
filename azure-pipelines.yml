@@ -47,9 +47,10 @@ jobs:
     displayName: 'Create sidecar'
   - template: templates/clone-docker-volume.yml  
     parameters:
+      pfaEndpoint:  '$(pfaEndpoint)'
+      pfaApiToken:  '$(pfaApiToken)'
       sourceVolume: 'ca-docker-$(seedDockerVolume)'
       targetVolume: 'ca-docker-$(dockerVolume)'
-      pfaEndpoint:  '$(pfaEndpoint)'
  # - download: current
   - script: |
       sudo docker start $(container)
