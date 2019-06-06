@@ -15,5 +15,5 @@ steps:
       import purestorage
       import urllib3
       urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-      fa = purestorage.FlashArray(target={0}, api_token={1})
+      fa = purestorage.FlashArray(target="{0}", api_token="{1}")
       fa.copy_volume( {2}, {3}, overwrite="true"))', parameters.pfaEndpoint, parameters.pfaApiToken, parameters.sourceVolume, parameters.targetVolume) }}  
