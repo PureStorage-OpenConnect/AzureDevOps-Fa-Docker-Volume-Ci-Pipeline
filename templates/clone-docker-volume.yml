@@ -1,18 +1,19 @@
 # File: templates/clone-docker-volume.yml
 
 parameters:
+  pfaEndpoint: ''
+  pfaApiToken: ''
   sourceVolume: ''
   targetVolume: ''
-  pfaEndpoint: ''
 
 steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
     script: |
-      #!/usr/bin/env python3
+      ${{ format('#!/usr/bin/env python3
       import purestorage
       import urllib3
       urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-      fa = purestorage.FlashArray(target="${{ parameters.pfaEndpoint }}", api_token="5d8ad02f-547d-fc24-bb51-fa0d2b0de973")
-      fa.copy_volume( "${{ parameters.sourceVolume }}", "${{ parameters.targetVolume }}", overwrite="true")
+      fa = purestorage.FlashArray(target="{0}", api_token="{1}")
+      fa.copy_volume( "{2}", "{3}", overwrite="true"))', parameters.pfaEndpoint, parameters.pfaApiToken, parameters.sourceVolume, parameters.targetVolume) }}  
