@@ -121,7 +121,7 @@ jobs:
   - name: connString
     value: 'server=$(sideCarServerIpAddr),$(externalPort);database=tpch;user id=sa;password=$(saPassword)'
   - name: dacPacPath
-    value: '$(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release\$(ssdtProject).dacpac'
+    value: '$(System.ArtifactsDirectory)\$(ssdtProject).dacpac'
   steps:
   - script: |
       sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
@@ -129,6 +129,12 @@ jobs:
       sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'clr strict security', 0; RECONFIGURE;"
       sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d master -U sa -P $(saPassword) -Q "ALTER DATABASE tpch SET RECOVERY SIMPLE;"
     displayName: 'Prepare sidecar for tSQLtCLR assembly'
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      itemPattern: '**' # Optional
+      downloadPath: '$(System.ArtifactsDirectory)' 
+      parallelizationLimit: '4'
+
   - script: sqlpackage.exe /Action:Publish /sf:"$(dacPacPath)" /tcs:"$(connString)" /p:ExcludeObjectType=Logins
     displayName: 'Publish DacPac'
   - script: sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC tSQLt.Run $(tSQLtTestClass);"
