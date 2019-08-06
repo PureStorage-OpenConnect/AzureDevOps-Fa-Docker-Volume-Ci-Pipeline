@@ -88,21 +88,21 @@ jobs:
         tSQLtTestClass: 'IncPS_AvailQty'
   variables:
   - name: connString
-    value: 'server=10.225.112.103,$(externalPort);database=tpch;user id=sa;password=$(saPassword)'
+    value: 'server=$(sideCarServerIpAddr),$(externalPort);database=tpch;user id=sa;password=$(saPassword)'
   - name: dacPacPath
     value: '$(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release\$(ssdtProject).dacpac'
   steps:
   - script: |
-      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
-      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'clr enabled', 1; RECONFIGURE;"
-      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'clr strict security', 0; RECONFIGURE;"
-      sqlcmd.exe -S 10.225.112.103,$(externalPort) -d master -U sa -P $(saPassword) -Q "ALTER DATABASE tpch SET RECOVERY SIMPLE;"
+      sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
+      sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'clr enabled', 1; RECONFIGURE;"
+      sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'clr strict security', 0; RECONFIGURE;"
+      sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d master -U sa -P $(saPassword) -Q "ALTER DATABASE tpch SET RECOVERY SIMPLE;"
     displayName: 'Prepare sidecar for tSQLtCLR assembly'
   - script: sqlpackage.exe /Action:Publish /sf:"$(dacPacPath)" /tcs:"$(connString)" /p:ExcludeObjectType=Logins
     displayName: 'Publish DacPac'
-  - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC tSQLt.Run $(tSQLtTestClass);"
+  - script: sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC tSQLt.Run $(tSQLtTestClass);"
     displayName: 'Execute tSQLt Tests'
-  - script: sqlcmd.exe -S 10.225.112.103,$(externalPort) -d tpch -U sa -P $(saPassword) -y0 -Q "SET NOCOUNT ON;EXEC tSQLt.XmlResultFormatter;" -o $(System.DefaultWorkingDirectory)\$(tSQLtTestClass).xml
+  - script: sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -y0 -Q "SET NOCOUNT ON;EXEC tSQLt.XmlResultFormatter;" -o $(System.DefaultWorkingDirectory)\$(tSQLtTestClass).xml
     displayName: 'Render tSQLt Results in XML'
 
 - job: PublishTestResults
