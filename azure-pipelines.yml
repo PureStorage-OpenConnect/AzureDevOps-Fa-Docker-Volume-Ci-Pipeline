@@ -79,6 +79,9 @@ jobs:
     inputs:
       solution: '$(ssdtProject).sln'
       msbuildArguments: '/property:OutDir=bin\Release'
+  - task: CmdLine@2
+    inputs:
+      script: 'erase $(Build.ArtifactStagingDirectory)\**' 
   - task: CopyFiles@2
     inputs:
       SourceFolder: $(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release
