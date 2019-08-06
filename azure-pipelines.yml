@@ -84,7 +84,6 @@ jobs:
       SourceFolder: $(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release
       contents: '**'
       targetFolder: $(Build.ArtifactStagingDirectory)
-
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: $(Build.ArtifactStagingDirectory)
@@ -131,6 +130,7 @@ jobs:
     displayName: 'Prepare sidecar for tSQLtCLR assembly'
   - task: DownloadBuildArtifacts@0
     inputs:
+      artifactName: DacPac
       itemPattern: '**' # Optional
       downloadPath: '$(System.ArtifactsDirectory)' 
       parallelizationLimit: '4'
