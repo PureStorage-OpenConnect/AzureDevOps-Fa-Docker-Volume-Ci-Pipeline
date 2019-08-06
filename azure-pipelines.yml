@@ -6,6 +6,11 @@ variables:
   value: 'AzureDevOps-Fa-Docker-Volume-Ci-Pipeline'
 
 jobs:
+#
+# --------------------------------------------------------------------------------------
+# 1. Ensure environment is clean following any previous runs
+# --------------------------------------------------------------------------------------
+#
 - job: CleanEnvironment
   pool: $(linuxAgentPool)
   steps:
@@ -14,6 +19,11 @@ jobs:
       sudo docker volume rm -f $(sudo docker volume ls | grep -v $(seedDockerVolume))
     displayName: 'Clean up old sidecar containers and volumes'
 
+#
+# --------------------------------------------------------------------------------------
+# 2. Create SQL Server sidecar containers with cloned copies of the 'Seed' docker volume
+# --------------------------------------------------------------------------------------
+#
 - job: BuildTestEnvironment
   pool: $(linuxAgentPool)
   dependsOn: CleanEnvironment
@@ -51,10 +61,14 @@ jobs:
       pfaApiToken:  '$(pfaApiToken)'
       sourceVolume: 'ca-docker-$(seedDockerVolume)'
       targetVolume: 'ca-docker-$(dockerVolume)'
- # - download: current
   - script: |
       sudo docker start $(container)
 
+#
+# --------------------------------------------------------------------------------------
+# 3. Build the artifact to deploy
+# --------------------------------------------------------------------------------------
+#
 - job: BuildDacPac
   pool: $(winAgentPool)
   workspace:
@@ -65,8 +79,12 @@ jobs:
     inputs:
       solution: '$(ssdtProject).sln'
       msbuildArguments: '/property:OutDir=bin\Release'
-#  - upload: $(ssdtProject)\bin\Release
 
+#
+# --------------------------------------------------------------------------------------
+# 4. Deploy the artifact and run tests in PARALLEL
+# --------------------------------------------------------------------------------------
+#
 - job: DeployAndTestDacPac
   dependsOn: 
   - BuildDacPac
@@ -105,6 +123,11 @@ jobs:
   - script: sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -y0 -Q "SET NOCOUNT ON;EXEC tSQLt.XmlResultFormatter;" -o $(System.DefaultWorkingDirectory)\$(tSQLtTestClass).xml
     displayName: 'Render tSQLt Results in XML'
 
+#
+# --------------------------------------------------------------------------------------
+# 5. Aggregate the test results
+# --------------------------------------------------------------------------------------
+#
 - job: PublishTestResults
   dependsOn: 
   - DeployAndTestDacPac
