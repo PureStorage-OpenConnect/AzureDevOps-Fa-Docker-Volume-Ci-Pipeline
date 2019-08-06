@@ -81,8 +81,9 @@ jobs:
       msbuildArguments: '/property:OutDir=bin\Release'
   - task: CopyFiles@2
     inputs:
+      SourceFolder: $(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release
       contents: '**'
-      targetFolder: $(System.DefaultWorkingDirectory)\$(ssdtProject)\bin\Release
+      targetFolder: $(Build.ArtifactStagingDirectory)
 
   - task: PublishBuildArtifacts@1
     inputs:
