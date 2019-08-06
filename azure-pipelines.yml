@@ -79,6 +79,17 @@ jobs:
     inputs:
       solution: '$(ssdtProject).sln'
       msbuildArguments: '/property:OutDir=bin\Release'
+  - task: CopyFiles@2
+    inputs:
+      contents: 'bin\release\$(ssdtProject).dacpac'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: DacPac
+  - task: CmdLine@2
+    inputs:
+      script: 'echo $(Build.ArtifactStagingDirectory)' 
 
 #
 # --------------------------------------------------------------------------------------
