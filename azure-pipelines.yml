@@ -120,7 +120,7 @@ jobs:
   - name: connString
     value: 'server=$(sideCarServerIpAddr),$(externalPort);database=tpch;user id=sa;password=$(saPassword)'
   - name: dacPacPath
-    value: '$(System.ArtifactsDirectory)\$(ssdtProject).dacpac'
+    value: '$(System.ArtifactsDirectory)\DacPac\$(ssdtProject).dacpac'
   steps:
   - script: |
       sqlcmd.exe -S $(sideCarServerIpAddr),$(externalPort) -d tpch -U sa -P $(saPassword) -Q "EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE;"
