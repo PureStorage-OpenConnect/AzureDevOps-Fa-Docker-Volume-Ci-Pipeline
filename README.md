@@ -40,11 +40,13 @@ This example requires that the following software components are installed:
 
     -- [Azure DevOps build agents for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
-    -- DacFx: the data tier applications toolkit framework
+    -- [Data tier applications toolkit framework](https://www.microsoft.com/en-us/download/details.aspx?id=55114)
+    
+    -- [msbuild for SQL Server Data Tools targets](https://www.nuget.org/packages/Microsoft.Data.Tools.Msbuild/)
 
-    -- sqlcmd
+    -- [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-2017)
 
-    -- Git client for windows
+    -- [Git for Windows](https://git-scm.com/download/win)
 
 - On-premises Ubuntu server
 
