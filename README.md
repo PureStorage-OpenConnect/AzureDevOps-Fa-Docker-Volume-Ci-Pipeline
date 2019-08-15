@@ -30,4 +30,4 @@ The pipeline infrastructure consists of:
 
 - An on-premises Windows 2016 server, this hosts four build agents that turn the SQL Server data tools project into a DacPac
 
-- An on-premises Ubuntu server, 
+- An on-premises Ubuntu server, this is used for the BuildTestEnvironment job in the pipeline. 
