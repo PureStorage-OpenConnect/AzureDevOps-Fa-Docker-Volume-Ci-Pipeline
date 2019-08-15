@@ -38,18 +38,18 @@ This example requires that the following software components are installed:
 
 - On-premises Windows server~
 
-    -- [Azure DevOps build agents for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
+    [Azure DevOps build agents for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
-    -- [Data tier applications toolkit framework](https://www.microsoft.com/en-us/download/details.aspx?id=55114)
+    [Data tier applications toolkit framework](https://www.microsoft.com/en-us/download/details.aspx?id=55114)
     
-    -- [msbuild for SQL Server Data Tools targets](https://www.nuget.org/packages/Microsoft.Data.Tools.Msbuild/)
+    [msbuild for SQL Server Data Tools targets](https://www.nuget.org/packages/Microsoft.Data.Tools.Msbuild/)
 
-    -- [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-2017)
+    [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-2017)
 
-    -- [Git for Windows](https://git-scm.com/download/win)
+    [Git for Windows](https://git-scm.com/download/win)
 
 - On-premises Ubuntu server
 
-   -- [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
+   [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
 
-   -- Pure Storage Service Orchestrator (PSO)
+   [Pure Storage Service Orchestrator (PSO)](https://hub.docker.com/r/purestorage/k8s/)
