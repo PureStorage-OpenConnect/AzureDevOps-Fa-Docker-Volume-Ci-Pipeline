@@ -22,7 +22,7 @@ The pipeline comprises of the following stages:
 
 # Pipeline Build Infrastructure
 
-![image](https://user-images.githubusercontent.com/15145995/63101996-276ad300-bf72-11e9-913f-9893eeab5f08.png)
+![image](https://user-images.githubusercontent.com/15145995/63102506-343bf680-bf73-11e9-8f7f-a50bee2cf746.png)
 
 The pipeline infrastructure consists of:
 
