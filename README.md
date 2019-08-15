@@ -21,3 +21,13 @@ The pipeline comprises of the following stages:
 7. The results for all unit tests are aggregated and published.
 
 # Pipeline Build Infrastructure
+
+![image](https://user-images.githubusercontent.com/15145995/63101996-276ad300-bf72-11e9-913f-9893eeab5f08.png)
+
+The pipeline infrastructure consists of:
+
+- An Azure DevOps pipeline in the Azure public cloud
+
+- An on-premises Windows 2016 server, this hosts four build agents that turn the SQL Server data tools project into a DacPac
+
+- An on-premises Ubuntu server, 
