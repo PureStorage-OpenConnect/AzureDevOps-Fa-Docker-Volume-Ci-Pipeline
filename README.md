@@ -38,7 +38,7 @@ This example requires that the following software components are installed:
 
 - On-premises Windows server~
 
-    [Azure DevOps build agents for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
+    [Azure DevOps build agent for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
     [Data tier applications toolkit framework](https://www.microsoft.com/en-us/download/details.aspx?id=55114)
     
@@ -50,10 +50,12 @@ This example requires that the following software components are installed:
 
 - On-premises Ubuntu server
 
-   [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
+   [Azure DevOps build agent for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
 
    [Docker engine for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
    
+   [Pure Storage Python SDK for FlashArray](https://pure-storage-python-rest-client.readthedocs.io/en/latest/installation.html)
+   
    [Pure Storage Service Orchestrator (PSO)](https://hub.docker.com/r/purestorage/k8s/)
    
-   
+# The Docker Volume Clone Process   
