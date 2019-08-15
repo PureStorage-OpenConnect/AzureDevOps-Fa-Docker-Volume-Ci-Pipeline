@@ -38,16 +38,16 @@ This example requires that the following software components are installed:
 
 - On-premises Windows server~
 
--- [Azure DevOps build agents for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
+    -- [Azure DevOps build agents for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
--- DacFx: the data tier applications toolkit framework
+    -- DacFx: the data tier applications toolkit framework
 
--- sqlcmd
+    -- sqlcmd
 
--- Git client for windows
+    -- Git client for windows
 
 - On-premises Ubuntu server
 
--- [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
+   -- [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
 
--- Pure Storage Service Orchestrator (PSO)
+   -- Pure Storage Service Orchestrator (PSO)
