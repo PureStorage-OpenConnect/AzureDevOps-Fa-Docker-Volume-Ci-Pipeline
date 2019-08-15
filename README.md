@@ -36,6 +36,8 @@ The pipeline infrastructure consists of:
 
 This example requires that the following software components are installed:
 
+
+
 - On-premises Windows server~
 
     [Azure DevOps build agent for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
@@ -68,7 +70,7 @@ At the time of writing Docker does not furnish a native means by which Docker vo
 
 - each sidecar container is started up with an empty (blank) docker volume,
 - once started each sidecar container is stopped
-- the Python code in templates/clone-docker-volume.yml is used to copy the 'Seed' Docker volume over the top of each sidecars blank volume
+- the Python code in templates/clone-docker-volume.yml is used to copy the 'Seed' Docker volume over the top of each sidecar container's blank volume
 - each side car container is re-started
 
 The python code in the Azure DevOps pipeline template leverages FlashArray via the Python SDK which in turn communicates to the FlashArray via its REST API.
@@ -77,4 +79,5 @@ The python code in the Azure DevOps pipeline template leverages FlashArray via t
 
 This example pipeline uses the following variables which must be set correctly prior to the pipeline being executed for the first time:
 
+![image](https://user-images.githubusercontent.com/15145995/63107469-e6c48700-bf7c-11e9-847f-518b650ac7dd.png)
 
