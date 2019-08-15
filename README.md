@@ -52,4 +52,8 @@ This example requires that the following software components are installed:
 
    [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
 
+   [Docker engine for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+   
    [Pure Storage Service Orchestrator (PSO)](https://hub.docker.com/r/purestorage/k8s/)
+   
+   
