@@ -18,4 +18,6 @@ The pipeline comprises of the following stages:
 
 6. A tSQLt unit test is performed against each container,
 
-7. The results for each unit test are aggregated and published, if one or more test fails, the entire pipeline execution will fail.
+7. The results for all unit tests are aggregated and published.
+
+# Pipeline Build Infrastructure
