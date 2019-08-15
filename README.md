@@ -12,7 +12,7 @@ The pipeline comprises of the following stages:
 
 3. A seed 'Docker' volume is cloned four times,
 
-4. Four sidecar containers based on the official Microsoft SQL Server 2017 image are created using a copy of the seed volume created i the previousb step,
+4. Four sidecar containers based on the official Microsoft SQL Server 2017 image are created using a copy of the seed volume created i the previous step,
 
 5. The DacPac will be deployed to each of the four containers,
 
