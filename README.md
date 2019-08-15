@@ -58,4 +58,23 @@ This example requires that the following software components are installed:
    
    [Pure Storage Service Orchestrator (PSO)](https://hub.docker.com/r/purestorage/k8s/)
    
+   [Python 3 runtime for Ubuntu](https://packages.ubuntu.com/xenial/python3-apt)
+   
+   [urllib3 package for python](https://github.com/urllib3/urllib3/issues/1392)
+   
 # The Docker Volume Clone Process   
+
+At the time of writing Docker does not furnish a native means by which Docker volumes can be cloned, therefore the following process is followed:
+
+- each sidecar container is started up with an empty (blank) docker volume,
+- once started each sidecar container is stopped
+- the Python code in templates/clone-docker-volume.yml is used to copy the 'Seed' Docker volume over the top of each sidecars blank volume
+- each side car container is re-started
+
+The python code in the Azure DevOps pipeline template leverages FlashArray via the Python SDK which in turn communicates to the FlashArray via its REST API.
+
+# Pipeline Variables
+
+This example pipeline uses the following variables which must be set correctly prior to the pipeline being executed for the first time:
+
+
