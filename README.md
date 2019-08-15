@@ -28,6 +28,22 @@ The pipeline infrastructure consists of:
 
 - An Azure DevOps pipeline in the Azure public cloud
 
-- An on-premises Windows 2016 server, this hosts four build agents that turn the SQL Server data tools project into a DacPac
+- An on-premises Windows 2016 server, this hosts four build agents that are used for the BuildDacPac, DeployAndTestDacPac and the PublishTestResults jobs.
 
-- An on-premises Ubuntu server, this is used for the BuildTestEnvironment job in the pipeline. 
+- An on-premises Ubuntu server, this is used for the CleanEnvironment and BuildTestEnvironment jobs in the pipeline. 
+
+# Pre-Requisite Software Build Components
+
+This example requires that the following software components are installed:
+
+- On-premises Windows server
+-- [Azure DevOps build agents for windows, refer to](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
+-- DacFx: the data tier applications toolkit framework
+-- sqlcmd
+-- Git client for windows
+
+- On-premises Ubuntu server
+-- [Azure DevOps build agents for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
+-- Pure Storage Service Orchestrator (PSO)
+
+
