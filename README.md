@@ -97,11 +97,11 @@ This example pipeline uses the following variables which must be set correctly p
 
 - seedDockerVolume
 
-    Name of the docker volume container the test data, in this specific example this containers a SQL Server database, eligable docker       volumes are those whose names should appear on the Linux server after issuing a docker volume ls command
+    Name of the docker volume containing the test data, in this specific example this contains a SQL Server database, eligable docker       volumes are those whose names appear after issuing a docker volume ls command on the Linux server
 
 - sideCarServerIpAddr
 
-    IP address of the Linux server used for spinning up the containerised SQL Server instances used in this example
+    IP address of the Linux server used for spinning up the containerised SQL Server instances
 
 - winAgentPool
 
