@@ -32,11 +32,13 @@ The pipeline infrastructure consists of:
 
 - An on-premises Ubuntu server, this is used for the CleanEnvironment and BuildTestEnvironment jobs in the pipeline. 
 
-# Pre-Requisite Software Build Components
+# Pre-Requisites
 
 This example requires that the following software components are installed:
 
+- Azure DevOps
 
+    An Azure DevOps accounts is required with self-hosted agent pools created for the windows and linux build agents
 
 - On-premises Windows server~
 
