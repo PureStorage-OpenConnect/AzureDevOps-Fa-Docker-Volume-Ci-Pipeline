@@ -99,7 +99,7 @@ This example pipeline uses the following variables which must be set correctly p
 
 - seedDockerVolume
 
-    Name of the docker volume containing the test data, in this specific example this contains a SQL Server database, eligable docker       volumes are those whose names appear after issuing a docker volume ls command on the Linux server
+    Name of the docker volume containing the test data, in this specific example this contains a SQL Server database, eligable docker       volumes are those whose names appear after issuing a `docker volume ls` command on the Linux server
 
 - sideCarServerIpAddr
 
