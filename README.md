@@ -80,23 +80,29 @@ The python code in the Azure DevOps pipeline template leverages FlashArray via t
 This example pipeline uses the following variables which must be set correctly prior to the pipeline being executed for the first time:
 
 - linuxAgentPool
+
 The namew of the agent pool containing the Linux self-hosted build agents
 
 - pfaApiToken
+
 API token string for accessing FlashArray, as configured via the Purity GUI
 
 - pfaEndPoint
+
 FlashArray IP address end point 
 
 - saPassword
+
 sa password for the containerised SQL Server instances
 
 - seedDockerVolume
+
 Name of the docker volume container the test data, in this specific example this containers a SQL Server database, eligable docker volumes are those whose names should appear on the Linux server after issuing a docker volume ls command
 
 - sideCarServerIpAddr
+
 IP address of the Linux server used for spinning up the containerised SQL Server instances used in this example
 
 - winAgentPool
 
-
+The name of the agent pool containing self-hosted windows build agents
