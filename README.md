@@ -8,7 +8,7 @@ The pipeline comprises of the following stages:
 
 1. A SQL Server Data Tools (SSDT) project is checked out of source code control (GitHub),
 
-2. The project is built resulting in a DacPac,
+2. The project is built, this results in a deployable artifact in the form of a DacPac,
 
 3. A seed 'Docker' volume is cloned four times,
 
