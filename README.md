@@ -36,10 +36,9 @@ The pipeline infrastructure consists of:
 
 - Azure DevOps:
 
-    -- An Azure DevOps accounts is required with self-hosted agent pools created for the windows and linux build agents,
+-- An Azure DevOps accounts is required with self-hosted agent pools created for the windows and linux build agents,
     
-    -- The use of self-hosted build agent mandates that Azure DevOps can communicate with the on-premises servers hosting these agents  
-       via port 44.
+-- The use of self-hosted build agent mandates that Azure DevOps can communicate with the on-premises servers hosting these agents via port 44.
 
 - On-premises Windows server:
 
