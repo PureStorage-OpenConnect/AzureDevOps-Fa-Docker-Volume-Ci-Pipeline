@@ -12,13 +12,13 @@ The pipeline comprises of the following stages:
 
 3. A seed 'Docker' volume is cloned four times,
 
-4. Four sidecar containers based on the official Microsoft SQL Server 2017 image are created using a copy of the seed volume created in the previous step,
+4. The Microsoft SQL Server 2017 image is used to create four 'Sidecar' containers, each using a copy of the seed volume created in the previous step,
 
-5. The DacPac will be deployed to each of the four containers,
+5. The DacPac is deployed to each of the four containers,
 
-6. A tSQLt unit test is performed against each container,
+6. A tSQLt unit test is executed against each container,
 
-7. The results for all unit tests are aggregated and published.
+7. The results from all the unit tests are aggregated and published.
 
 # Pipeline Build Infrastructure
 
@@ -34,14 +34,14 @@ The pipeline infrastructure consists of:
 
 # Pre-Requisites
 
-- Azure DevOps
+- Azure DevOps:
 
     -- An Azure DevOps accounts is required with self-hosted agent pools created for the windows and linux build agents,
     
-    -- The use of self-hosted build agent mandates that Azure DevOps can communicate with the on-premises servers hosting these agents via
-    port 44.
+    -- The use of self-hosted build agent mandates that Azure DevOps can communicate with the on-premises servers hosting these agents  
+       via port 44.
 
-- On-premises Windows server~
+- On-premises Windows server:
 
     [Azure DevOps build agent for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
@@ -53,7 +53,7 @@ The pipeline infrastructure consists of:
 
     [Git for Windows](https://git-scm.com/download/win)
 
-- On-premises Ubuntu server
+- On-premises Ubuntu server:
 
    [Azure DevOps build agent for Linux](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops)
 
@@ -71,12 +71,12 @@ The pipeline infrastructure consists of:
 
 At the time of writing Docker does not furnish a native means by which Docker volumes can be cloned, therefore the following process is followed:
 
-- each sidecar container is started up with an empty (blank) docker volume,
+- each sidecar container is created with an empty (blank) docker volume,
 - once started each sidecar container is stopped
 - the Python code in templates/clone-docker-volume.yml is used to copy the 'Seed' Docker volume over the top of each sidecar container's blank volume
-- each side car container is re-started
+- each sidecar container is re-started
 
-The python code in the Azure DevOps pipeline template leverages FlashArray via the Python SDK which in turn communicates to the FlashArray via its REST API.
+The python code in the Azure DevOps pipeline template leverages FlashArray via the Python SDK, this communicates with the FlashArray via its REST API.
 
 # Pipeline Variables
 
