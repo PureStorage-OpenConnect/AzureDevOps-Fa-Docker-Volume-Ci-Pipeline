@@ -42,17 +42,15 @@ The pipeline infrastructure consists of:
 
 ## On-premises Windows Server
 
+   [Azure DevOps build agent for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
 
-    [Azure DevOps build agent for windows](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-windows?view=azure-devops)
-
-    [Data tier applications toolkit framework](https://www.microsoft.com/en-us/download/details.aspx?id=55114)
+   [Data tier applications toolkit framework](https://www.microsoft.com/en-us/download/details.aspx?id=55114)
     
-    [msbuild for SQL Server Data Tools targets](https://www.nuget.org/packages/Microsoft.Data.Tools.Msbuild/)
+   [msbuild for SQL Server Data Tools targets](https://www.nuget.org/packages/Microsoft.Data.Tools.Msbuild/)
 
-    [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-2017)
+   [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-2017)
 
-    [Git for Windows](https://git-scm.com/download/win)
-
+   [Git for Windows](https://git-scm.com/download/win)
 
 ## On-premises Ubuntu Server
 
